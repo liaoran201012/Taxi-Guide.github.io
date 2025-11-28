@@ -41,7 +41,7 @@ Failed: error occurred while running deploy command
 | 设置项 | 值 |
 |------|---|
 | **Project name** | `taxi-guide` （或任意名称） |
-| **Production branch** | `main` |
+| **Production branch** | `main` (⚠️ 不要选 `gh-pages`！) |
 | **Build command** | `npm run build` |
 | **Build output directory** | `dist` |
 | **Root directory (advanced)** | `/` （留空）|
@@ -50,7 +50,7 @@ Failed: error occurred while running deploy command
 **关键点**：
 - ✅ Build command 必须是 `npm run build`
 - ✅ Build output directory 必须是 `dist`（不是其他）
-- ✅ Production branch 必须是 `main`
+- ✅ Production branch 必须是 `main`（`gh-pages` 分支没有源代码，会导致构建失败）
 
 ---
 
@@ -113,6 +113,17 @@ Failed: error occurred while running deploy command
    npm run build
    ls dist/  # 应该看到文件
    ```
+
+### 问题 1.5：Cloudflare 显示 "No package.json found" 或构建立即失败
+
+**原因**：你可能选择了 `gh-pages` 分支。
+
+**解决方案**：
+1. 进入 Cloudflare Pages 项目设置
+2. 点击 **"Settings"** -> **"Builds & deployments"**
+3. 点击 **"Configure Production deployments"**
+4. 将 **Production branch** 改为 `main`
+5. 保存并重新部署
 
 ### 问题 2：页面显示 404
 
